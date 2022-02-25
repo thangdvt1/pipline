@@ -93,7 +93,7 @@ pipeline {
         stage('Deploying and Cleaning') {
             agent {
                 node {
-                    label 'ubuntu2'
+                    label 'ubuntu'
                 }
             }
             steps {
