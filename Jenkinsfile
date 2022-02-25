@@ -53,11 +53,11 @@ pipeline {
             }
         }
         stage('Build in maven') {
-            // agent {
-            //     docker {
-            //         image 'maven:latest'
-            //     }
-            // }
+            agent {
+                node {
+                    label 'ubuntu2'
+                }
+            }
             steps {
                 sh 'echo $HOVATEN'
                 echo "Hello ${params.MYNAME}"
@@ -65,7 +65,7 @@ pipeline {
                 sh 'mvn --version'
                 sh 'pwd'
                 sh 'ls -la'
-                sh 'mvn clean package -Dmaven.test.failure.ignore=true'
+                sh 'mvn clean package -Dmaven.test.failure.ignore=true' // asfdasdf.jar 
                 stash includes : 'target/*.jar', name: 'app'
                 
             }
@@ -91,11 +91,11 @@ pipeline {
             }
         }
         stage('Deploying and Cleaning') {
-            agent {
-                node {
-                    label 'ubuntu'
-                }
-            }
+            // agent {
+            //     node {
+            //         label 'ubuntu'
+            //     }
+            // }
             steps {
                 echo 'Deploying and cleaning'
                 sh 'docker image rm hoangledinh65/springboot-image:1.0 || echo "this image does not exist" '
