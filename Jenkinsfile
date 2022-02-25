@@ -91,6 +91,11 @@ pipeline {
             }
         }
         stage('Deploying and Cleaning') {
+            agent {
+                node {
+                    label 'aws'
+                }
+            }
             steps {
                 echo 'Deploying and cleaning'
                 sh 'docker image rm hoangledinh65/springboot-image:1.0 || echo "this image does not exist" '
