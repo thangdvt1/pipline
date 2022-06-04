@@ -53,9 +53,9 @@ pipeline {
             }
         }
         stage('Build in maven') {
-            when {
-                environment name:'isBuilt', value:'true'
-            }
+            // when {
+            //     environment name:'isBuilt', value:'true'
+            // }
             parallel {
                 stage('In parallel 1') {
                     agent any
