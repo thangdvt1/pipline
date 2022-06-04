@@ -60,13 +60,19 @@ pipeline {
                 stage('In parallel 1') {
                     agent any
                     steps {
-                        sh 'echo "in parallel 1"'
+                        sh ''' 
+                            echo "in parallel 1"
+                            mvn clean package
+                            '''
                     }
                 }
                 stage('In parallel 2') {
                     agent any 
                     steps {
-                        sh 'echo "in parallel 2"'
+                        sh ''' 
+                            echo "in parallel 2"
+                            mvn clean package
+                            '''
                     }
                 }
             }
