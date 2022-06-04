@@ -64,6 +64,7 @@ pipeline {
                             echo "in parallel 1"
                             mvn clean package
                             '''
+                        stash includes: 'target/*', name: 'app'
                     }
                 }
                 stage('In parallel 2') {
@@ -73,6 +74,8 @@ pipeline {
                             echo "in parallel 2"
                             mvn clean package
                             '''
+                        stash includes: 'target/*', name: 'app'
+
                     }
                 }
             }
