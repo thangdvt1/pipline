@@ -36,6 +36,7 @@ pipeline {
                 }
             }
             steps {
+                echo "${env.name}"
                 // sh 'sudo apt install maven'
                 echo "Hello ${params.PERSON}"
 
@@ -101,11 +102,11 @@ pipeline {
             }
         }
         stage('Deploying and Cleaning') {
-            agent {
-                node {
-                    label 'ubuntu'
-                }
-            }
+            // agent {
+            //     node {
+            //         label 'ubuntu'
+            //     }
+            // }
             steps {
                 echo 'Deploying and cleaning'
                 sh 'docker image rm hoangledinh65/springboot-image:1.0 || echo "this image does not exist" '
