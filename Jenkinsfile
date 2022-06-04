@@ -59,11 +59,6 @@ pipeline {
             when {
                 environment name:'isBuilt', value:'true'
             }
-            agent {
-                node {
-                    label 'ubuntu2'
-                }
-            }
             parallel {
                 stage('In parallel 1') {
                     agent any
