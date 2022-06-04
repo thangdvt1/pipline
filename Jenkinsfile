@@ -5,6 +5,10 @@ pipeline {
         maven 'my-maven' 
         jdk 'my-jdk' 
     }
+    options {
+        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '3', numToKeepStr: '3')
+    }
+
     parameters {
         string(name: 'Username', defaultValue: 'dinhlehoang', description: 'Username')
 
