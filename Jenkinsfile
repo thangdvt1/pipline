@@ -27,16 +27,13 @@ pipeline {
             when {
                 allOf {
                     branch 'develop'
-                    environment name:'name', value:'dinhlehoang'
+                    // environment name:'name', value:'dinhlehoang'
                 }
             }
             agent {
                 docker {
                     image 'maven:latest'
                 }
-            }
-            environment {
-                NAME = 'HOANG'
             }
             steps {
                 // sh 'sudo apt install maven'
