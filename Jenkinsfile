@@ -6,15 +6,11 @@ pipeline {
         jdk 'my-jdk' 
     }
     parameters {
-        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+        string(name: 'Username', defaultValue: 'dinhlehoang', description: 'Username')
 
-        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
+        booleanParam(name: 'willBuild', defaultValue: true, description: 'Build or not?')
 
-        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
-
-        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
-
-        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
+        password(name: 'Password', defaultValue: '', description: 'Enter a password')
 
         string(name: 'MYNAME', defaultValue: 'BI', description: 'my name is BI')
     }
@@ -23,10 +19,17 @@ pipeline {
         NAME = 'DINHLE'
         HOVATEN = 'DINHLEHOANG'
         abc = 'asdf'
+        name = 'dinhlehoang'
     }
     stages {
 
         stage('Initialize') {
+            when {
+                allOf {
+                    branch 'develop'
+                    environment name:'name', value:'dinhlehoang'
+                }
+            }
             agent {
                 docker {
                     image 'maven:latest'
@@ -53,9 +56,26 @@ pipeline {
             }
         }
         stage('Build in maven') {
+            when {
+                environment name:'isBuilt', value:'true'
+            }
             agent {
                 node {
                     label 'ubuntu2'
+                }
+            }
+            parallel {
+                stage('In parallel 1') {
+                    agent any
+                    steps {
+                        sh 'echo "in parallel 1"'
+                    }
+                }
+                stage('In parallel 2') {
+                    agent any 
+                    steps {
+                        sh 'echo "in parallel 2"'
+                    }
                 }
             }
             steps {
