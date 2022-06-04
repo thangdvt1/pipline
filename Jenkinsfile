@@ -20,7 +20,6 @@ pipeline {
     }
     environment {
         DOCKERHUB_CREDENTIALS=credentials('dockerhub')
-        NAME = 'DINH LE'
         HOVATEN = 'DINHLEHOANG'
         abc = 'asdf'
         name = 'dinhlehoang'
@@ -31,7 +30,7 @@ pipeline {
             when {
                 allOf {
                     branch 'develop'
-                    // environment name:'name', value:'dinhlehoang'
+                    environment name:'name', value:'dinhlehoang'
                 }
             }
             agent {
@@ -40,7 +39,6 @@ pipeline {
                 }
             }
             steps {
-                echo "${env.NAME}"
                 echo "${env.name}"
                 // sh 'sudo apt install maven'
                 echo "Hello ${params.PERSON}"
@@ -64,7 +62,9 @@ pipeline {
             // }
             parallel {
                 stage('In parallel 1') {
-                    agent any
+                    agent {
+                        label 'aws-amz'
+                    }
                     steps {
                         sh ''' 
                             echo "in parallel 1"
