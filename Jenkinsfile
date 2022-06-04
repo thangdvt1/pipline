@@ -41,6 +41,7 @@ pipeline {
             }
             steps {
                 echo "${env.NAME}"
+                echo "${env.name}"
                 // sh 'sudo apt install maven'
                 echo "Hello ${params.PERSON}"
 
