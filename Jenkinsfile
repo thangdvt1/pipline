@@ -16,6 +16,7 @@ pipeline {
     }
     environment {
         DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+        NAME = 'DINH LE'
         HOVATEN = 'DINHLEHOANG'
         abc = 'asdf'
         name = 'dinhlehoang'
@@ -35,7 +36,7 @@ pipeline {
                 }
             }
             steps {
-                echo "${env.name}"
+                echo "${env.NAME}"
                 // sh 'sudo apt install maven'
                 echo "Hello ${params.PERSON}"
 
