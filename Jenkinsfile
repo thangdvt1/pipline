@@ -78,17 +78,6 @@ pipeline {
                     }
                 }
             }
-            steps {
-                sh 'echo $HOVATEN'
-                echo "Hello ${params.MYNAME}"
-                echo 'Building nginx image..'
-                sh 'mvn --version'
-                sh 'pwd'
-                sh 'ls -la'
-                sh 'mvn clean package -Dmaven.test.failure.ignore=true' // asfdasdf.jar 
-                stash includes : 'target/*.jar', name: 'app'
-                
-            }
         }
 
         stage('Package to docker image') {
