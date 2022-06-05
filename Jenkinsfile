@@ -62,6 +62,7 @@ pipeline {
             // when {
             //     environment name:'isBuilt', value:'true'
             // }
+            failFast false
             parallel {
                 stage('In parallel 1') {
                     agent {
