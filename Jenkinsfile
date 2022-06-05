@@ -93,14 +93,11 @@ pipeline {
 
             steps {
                 unstash 'app' 
-                sh 'ls -la'
-                sh 'ls -la target'
                 sh 'docker build -t hoangledinh65/springboot-image:1.0 .'
             }
         }
         stage('Pushing image') {
             steps {
-                sh 'echo $HOVATEN'
                 echo 'Start pushing.. with credential'
                 sh 'echo $DOCKERHUB_CREDENTIALS'
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
@@ -109,11 +106,6 @@ pipeline {
             }
         }
         stage('Deploying and Cleaning') {
-            // agent {
-            //     node {
-            //         label 'ubuntu'
-            //     }
-            // }
             steps {
                 echo 'Deploying and cleaning'
                 sh 'docker image rm hoangledinh65/springboot-image:1.0 || echo "this image does not exist" '
@@ -126,12 +118,12 @@ pipeline {
             }
         }
         stage('Read file') {
-            when {
-                anyOf {
-                    environment name:'readsecret', value: 'true'
-                    environment name:'readtext', value: 'true'
-                }
-            }
+            // when {
+            //     anyOf {
+            //         environment name:'readsecret', value: 'true'
+            //         environment name:'readtext', value: 'true'
+            //     }
+            // }
             stages {
                 stage ('Readsecret') {
                     agent any 
