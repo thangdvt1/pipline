@@ -64,9 +64,9 @@ pipeline {
             // }
             parallel {
                 stage('In parallel 1') {
-                    agent {
-                        label 'aws-amz'
-                    }
+                    // agent {
+                    //     label 'aws-amz'
+                    // }
                     steps {
                         sh ''' 
                             echo "in parallel 1"
