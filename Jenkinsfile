@@ -17,6 +17,8 @@ pipeline {
         password(name: 'Password', defaultValue: '', description: 'Enter a password')
 
         string(name: 'MYNAME', defaultValue: 'BI', description: 'my name is BI')
+        booleanParam(name: 'readsecret', defaultValue: 'true')
+        booleanParam(name: 'readtext', defaultValue: 'true')
     }
     environment {
         DOCKERHUB_CREDENTIALS=credentials('dockerhub')
@@ -123,6 +125,34 @@ pipeline {
                 sh 'docker container run -d --rm --name my-demo-springboot -p 8082:8080 --network jenkins hoangledinh65/springboot-image:1.0'
             }
         }
-
+        stage('Read file') {
+            when {
+                anyOf {
+                    environment name:'readsecret', value: 'true'
+                    environment name:'readtext', value: 'true'
+                }
+            }
+            stages {
+                stage ('Readsecret') {
+                    agent any 
+                    steps {
+                        withCredentials([
+                            file(credentialsId: 'demosecret', variable: 'demosecret')
+				        ]) { 
+				    	        cat $demosecret
+                        }
+                    }
+                }
+                stage ('Readtext') {
+                    agent any 
+                    steps {
+                        withFile([
+                            file(credentialsId: 'demotext', variable: 'demotext')
+				        ]) { 
+				    	        cat $demotext
+                        }
+                    }
+                }
+            }
     }
 }
