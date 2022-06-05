@@ -131,7 +131,7 @@ pipeline {
                         withCredentials([
                             file(credentialsId: 'demosecret', variable: 'demosecret')
 				        ]) { 
-				    	        cat $demosecret
+				    	        sh "cat $demosecret"
                         }
                     }
                 }
@@ -139,9 +139,9 @@ pipeline {
                     agent any 
                     steps {
                         withFile([
-                            file(credentialsId: 'demotext', variable: 'demotext')
+                            file(fileId: 'demotext', variable: 'demotext')
 				        ]) { 
-				    	        cat $demotext
+				    	        sh "cat $demotext"
                         }
                     }
                 }
