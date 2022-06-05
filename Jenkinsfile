@@ -118,12 +118,12 @@ pipeline {
             }
         }
         stage('Read file') {
-            // when {
-            //     anyOf {
-            //         environment name:'readsecret', value: 'true'
-            //         environment name:'readtext', value: 'true'
-            //     }
-            // }
+            when {
+                anyOf {
+                    environment name:'readsecret', value: 'true'
+                    environment name:'readtext', value: 'true'
+                }
+            }
             stages {
                 stage ('Readsecret') {
                     agent any 
@@ -135,16 +135,7 @@ pipeline {
                         }
                     }
                 }
-                stage ('Readtext') {
-                    agent any 
-                    steps {
-                        withFile([
-                            file(fileId: 'demotext', variable: 'demotext')
-				        ]) { 
-				    	        sh "cat $demotext"
-                        }
-                    }
-                }
+
             }
     }
 }
