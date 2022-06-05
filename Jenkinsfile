@@ -64,9 +64,12 @@ pipeline {
             // }
             parallel {
                 stage('In parallel 1') {
-                    // agent {
-                    //     label 'aws-amz'
-                    // }
+                    agent {
+                        label 'aws-amz'
+                    }
+                    options {
+                        timeout(time: 20, unit: 'SECONDS')
+                    }
                     steps {
                         sh ''' 
                             echo "in parallel 1"
