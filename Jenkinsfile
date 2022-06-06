@@ -12,7 +12,7 @@ pipeline {
     parameters {
         string(name: 'Username', defaultValue: 'dinhlehoang', description: 'Username')
 
-        booleanParam(name: 'willBuild', defaultValue: TRUE, description: 'Build or not?')
+        booleanParam(name: 'willBuild', defaultValue: false, description: 'Build or not?')
 
         password(name: 'Password', defaultValue: '', description: 'Enter a password')
 
@@ -66,7 +66,7 @@ pipeline {
             parallel {
                 stage('In parallel 1') {
                     when {
-                        expression { return params.willBuild ==~ /(?i)(Y|YES|T|TRUE|ON|RUN)/ }
+                        expression { return params.willBuild }
                     }
                     options {
                         timeout(time: 20, unit: 'SECONDS')
