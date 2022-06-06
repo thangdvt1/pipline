@@ -12,7 +12,7 @@ pipeline {
     parameters {
         string(name: 'Username', defaultValue: 'dinhlehoang', description: 'Username')
 
-        booleanParam(name: 'willBuild', defaultValue: false, description: 'Build or not?')
+        booleanParam(name: 'willBuild', defaultValue: true, description: 'Build or not?')
 
         password(name: 'Password', defaultValue: '', description: 'Enter a password')
 
