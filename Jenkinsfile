@@ -145,7 +145,7 @@ pipeline {
 
 }
     post {
-        failure {
+        always {
             echo 'post office'
         }
     }
