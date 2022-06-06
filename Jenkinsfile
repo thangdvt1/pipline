@@ -66,7 +66,7 @@ pipeline {
             parallel {
                 stage('In parallel 1') {
                     when {
-                        expression { params.willBuild == 'true' }
+                        expression { params.willBuild == true }
                     }
                     options {
                         timeout(time: 20, unit: 'SECONDS')
