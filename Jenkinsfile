@@ -41,6 +41,7 @@ pipeline {
                 }
             }
             steps {
+                echo "${param.willBuild}"
                 echo "${env.name}"
                 // sh 'sudo apt install maven'
                 echo "Hello ${params.PERSON}"
