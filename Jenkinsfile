@@ -142,11 +142,12 @@ pipeline {
 
             }
     }
+
+}
     post {
         failure {
             echo 'post office'
         }
     }
-}
 }
 
