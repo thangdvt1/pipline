@@ -65,9 +65,9 @@ pipeline {
             failFast false
             parallel {
                 stage('In parallel 1') {
-                    // agent {
-                    //     label 'aws-amz'
-                    // }
+                    when {
+                        expression { params.willBuild == 'true' }
+                    }
                     options {
                         timeout(time: 20, unit: 'SECONDS')
                     }
