@@ -65,9 +65,9 @@ pipeline {
             failFast false
             parallel {
                 stage('In parallel 1') {
-                    agent {
-                        label 'aws-amz'
-                    }
+                    // agent {
+                    //     label 'aws-amz'
+                    // }
                     options {
                         timeout(time: 20, unit: 'SECONDS')
                     }
@@ -141,6 +141,11 @@ pipeline {
                 }
 
             }
+    }
+    post {
+        failure {
+            echo 'post office'
+        }
     }
 }
 }
