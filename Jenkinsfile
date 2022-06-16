@@ -124,6 +124,7 @@ pipeline {
                 stage ('Readsecret') {
                     agent any 
                     steps {
+                        echo 'abcd'
                         // withCredentials([
                         //     file(credentialsId: 'demosecret', variable: 'demosecret')
 				        // ]) { 
