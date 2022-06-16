@@ -45,21 +45,6 @@ pipeline {
             }
             steps {
                 // library 'my-library'
-                echo "${params.willBuild}"
-                echo "${env.name}"
-                // sh 'sudo apt install maven'
-                echo "Hello ${params.PERSON}"
-
-                echo "Biography: ${params.BIOGRAPHY}"
-
-                echo "Toggle: ${params.TOGGLE}"
-
-                echo "Choice: ${params.CHOICE}"
-
-                echo "Password: ${params.PASSWORD}"
-                echo "Myname is : ${params.MYNAME}"
-                // sh 'whoami'
-                sh 'mvn --version'
                 script {
                     demo 'hello hoang'
                 }
