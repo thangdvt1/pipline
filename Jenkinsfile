@@ -52,12 +52,9 @@ pipeline {
             failFast false
             parallel {
                 stage('In parallel 1') {
-                    when {
-                        expression { return params.willBuild }
-                    }
                     steps {
                         script {
-                            build()
+                            demo.build()
                         }
                         
                     }
@@ -66,7 +63,7 @@ pipeline {
                     agent any 
                     steps {
                         script {
-                            build()
+                            demo.build()
                         }
 
                     }
