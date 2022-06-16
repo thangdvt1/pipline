@@ -65,7 +65,7 @@ pipeline {
                     // }
                     steps {
                         script {
-                            build
+                            build()
                         }
                         // sh ''' 
                         //     echo "in parallel 1"
@@ -78,7 +78,7 @@ pipeline {
                     agent any 
                     steps {
                         script {
-                            build
+                            build()
                         }
                         // sh ''' 
                         //     echo "in parallel 2"
