@@ -64,21 +64,23 @@ pipeline {
                     //     timeout(time: 20, unit: 'SECONDS')
                     // }
                     steps {
-                        sh ''' 
-                            echo "in parallel 1"
-                            mvn clean package
-                            '''
-                        stash includes: 'target/*', name: 'app'
+                        build()
+                        // sh ''' 
+                        //     echo "in parallel 1"
+                        //     mvn clean package
+                        //     '''
+                        // stash includes: 'target/*', name: 'app'
                     }
                 }
                 stage('In parallel 2') {
                     agent any 
                     steps {
-                        sh ''' 
-                            echo "in parallel 2"
-                            mvn clean package
-                            '''
-                        stash includes: 'target/*', name: 'app'
+                        build()
+                        // sh ''' 
+                        //     echo "in parallel 2"
+                        //     mvn clean package
+                        //     '''
+                        // stash includes: 'target/*', name: 'app'
 
                     }
                 }
