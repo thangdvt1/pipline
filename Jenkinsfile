@@ -1,4 +1,6 @@
-// @Library('my-library') _
+@Library('my-library') _
+import org.hoangtest.Point
+
 pipeline {
     agent any
 
@@ -42,7 +44,7 @@ pipeline {
                 }
             }
             steps {
-                library 'my-library'
+                // library 'my-library'
                 echo "${params.willBuild}"
                 echo "${env.name}"
                 // sh 'sudo apt install maven'
@@ -60,6 +62,8 @@ pipeline {
                 sh 'mvn --version'
                 script {
                     demo 'hello hoang'
+                    def a = new Point()
+                    a.x = 4
                 }
 
             }
