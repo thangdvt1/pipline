@@ -58,7 +58,7 @@ pipeline {
                 // sh 'whoami'
                 sh 'mvn --version'
                 script {
-                    demo.info 'hello hoang'
+                    demo 'hello hoang'
                 }
 
             }
