@@ -63,7 +63,7 @@ pipeline {
                 script {
                     demo 'hello hoang'
                     def a = new MPoint(3.4f)
-                    a.echo()
+                    a.abc()
                 }
 
             }
