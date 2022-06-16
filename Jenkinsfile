@@ -5,7 +5,6 @@ pipeline {
     tools { 
         maven 'my-maven' 
         jdk 'my-jdk' 
-        terraform 'my-terraform'
     }
 
     parameters {
@@ -105,17 +104,7 @@ pipeline {
                 sh 'echo y | docker container prune '
                 sh 'echo y | docker image prune'
                 sh 'docker container run -d --rm --name my-demo-springboot -p 8082:8080 --network jenkins hoangledinh65/springboot-image:1.0'
-            }
-        }
-
-        stage('demo agent') {
-            agent {
-                docker {
-                    image 'ubuntu:latest'
-                }
-            }
-            steps {
-                sh 'lsb_release -a'
+                sh 'echo hoangledinh65'
             }
         }
         // stage('Ansible') {
