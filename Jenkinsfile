@@ -11,13 +11,13 @@ pipeline {
     }
 
     parameters {
-        string(name: 'Message', defaultValue: 'this is message', description: 'Message')
-        string(name: 'Person', defaultValue: 'dinhlehoang', description: 'Person')
+        string(name: 'message', defaultValue: 'this is message', description: 'Message')
+        string(name: 'person', defaultValue: 'dinhlehoang', description: 'Person')
         booleanParam(name: 'willBuild', defaultValue: true, description: 'Build or not?')
 
-        password(name: 'Password', defaultValue: '', description: 'Enter a password')
+        password(name: 'password', defaultValue: '', description: 'Enter a password')
 
-        string(name: 'MYNAME', defaultValue: 'BI', description: 'my name is BI')
+        string(name: 'myname', defaultValue: 'BI', description: 'my name is BI')
         booleanParam(name: 'readsecret', defaultValue: 'true')
         booleanParam(name: 'readtext', defaultValue: 'true')
     }
@@ -43,7 +43,7 @@ pipeline {
             }
             steps {
                 script {
-                    demo.echoParameters("params.Username", "params.Person", "params.willBuild", "params.Password", "params.MYNAME" )
+                    demo.echoParameters(params.message, params.person, params.willBuild, params.password, params.myname)
                     // demo.echoParameters("abcd", "mnqp", true, "thisispassword", "dinhlehoang")
                 }
                 // echo "this is message from my library: ${message}"
