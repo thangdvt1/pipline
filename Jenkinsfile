@@ -46,7 +46,7 @@ pipeline {
             steps {
                 // library 'my-library'
                 script { 
-                    demo 'hello hoang' 'abc' true
+                    demo ('hello hoang', 'abc', true)
                 }
 
             }
