@@ -43,7 +43,7 @@ pipeline {
             }
             steps {
                 script {
-                    demo.echoParameters(${params.Username}, ${params.Person}, ${params.willBuild}, ${params.Password}, ${params.MYNAME} )
+                    demo.echoParameters("${params.Username}", "${params.Person}", "${params.willBuild}", "${params.Password}", "${params.MYNAME}" )
                 }
                 // echo "this is message from my library: ${message}"
                 // sh 'mvn --version'
