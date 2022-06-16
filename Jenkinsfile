@@ -1,4 +1,4 @@
-@Library('my-library') _
+// @Library('my-library') _
 pipeline {
     agent any
 
@@ -42,6 +42,7 @@ pipeline {
                 }
             }
             steps {
+                library 'my-library'
                 echo "${params.willBuild}"
                 echo "${env.name}"
                 // sh 'sudo apt install maven'
