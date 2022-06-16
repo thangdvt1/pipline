@@ -44,7 +44,7 @@ pipeline {
             steps {
                 script {
                     demo.echoParameters("abcd", "mnqp", true, "thisispassword", "dinhlehoang")
-                    demo.echoParameters(this.params.message, this.params.person, this.params.willBuild, this.params.password, this.params.myname)
+                    demo.echoParameters(this.params.get(message), this.params.get(person), this.params.get(willBuild), this.params.get(password), this.params.get(myname))
 
                 }
                 // echo "this is message from my library: ${message}"
