@@ -44,6 +44,7 @@ pipeline {
             steps {
                 script {
                     demo.call()
+                    demo.info("dinhlehoang")
                 }
                 // library 'my-library'
                 // script { 
