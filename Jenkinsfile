@@ -124,11 +124,11 @@ pipeline {
                 stage ('Readsecret') {
                     agent any 
                     steps {
-                        withCredentials([
-                            file(credentialsId: 'demosecret', variable: 'demosecret')
-				        ]) { 
-				    	        sh "cat $demosecret"
-                        }
+                        // withCredentials([
+                        //     file(credentialsId: 'demosecret', variable: 'demosecret')
+				        // ]) { 
+				    	//         sh "cat $demosecret"
+                        // }
                     }
                 }
 
