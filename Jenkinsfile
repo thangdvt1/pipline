@@ -62,7 +62,7 @@ pipeline {
                 sh 'mvn --version'
                 script {
                     demo 'hello hoang'
-                    def a = new MPoint(3.4f)
+                    def a = new MPoint()
                     a.abc()
                 }
 
