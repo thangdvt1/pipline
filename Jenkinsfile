@@ -1,5 +1,5 @@
 @Library('my-library') _
-import org.hoangtest.MPoint
+// import org.hoangtest.MPoint
 
 pipeline {
     agent any
@@ -62,8 +62,6 @@ pipeline {
                 sh 'mvn --version'
                 script {
                     demo 'hello hoang'
-                    def a = new MPoint()
-                    a.abc()
                 }
 
             }
