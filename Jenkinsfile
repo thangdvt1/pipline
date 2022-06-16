@@ -64,7 +64,9 @@ pipeline {
                     //     timeout(time: 20, unit: 'SECONDS')
                     // }
                     steps {
-                        build()
+                        script {
+                            build
+                        }
                         // sh ''' 
                         //     echo "in parallel 1"
                         //     mvn clean package
@@ -75,7 +77,9 @@ pipeline {
                 stage('In parallel 2') {
                     agent any 
                     steps {
-                        build()
+                        script {
+                            build
+                        }
                         // sh ''' 
                         //     echo "in parallel 2"
                         //     mvn clean package
