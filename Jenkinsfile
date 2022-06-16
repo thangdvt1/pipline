@@ -1,5 +1,5 @@
 @Library('my-library') _
-import org.hoangtest.Point
+import org.hoangtest.MPoint
 
 pipeline {
     agent any
