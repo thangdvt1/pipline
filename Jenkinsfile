@@ -44,57 +44,30 @@ pipeline {
             steps {
                 script {
                     demo.echoParameters("abcd", "mnqp", true, "thisispassword", "dinhlehoang")
-                    demo.echoParameters(this.params.message, this.params.person, this.params.willBuild, this.params.password, this.params.myname)
-                    // print "parameter value: " + this.params.message
                 }
-                // echo "this is message from my library: ${message}"
-                // sh 'mvn --version'
-                // echo "Hello ${person}"
-                // echo "willBuild: ${willBuild}"
-                // echo "Password :${password}"
-                // echo "MyName: ${MYNAME}"
-                // library 'my-library'
-                // script { 
-                //     demo ('hello hoang', 'abc', true)
-                // }
 
             }
         }
         stage('Build in maven') {
-            // when {
-            //     environment name:'isBuilt', value:'true'
-            // }
             failFast false
             parallel {
                 stage('In parallel 1') {
                     when {
                         expression { return params.willBuild }
                     }
-                    // options {
-                    //     timeout(time: 20, unit: 'SECONDS')
-                    // }
                     steps {
-                        // script {
-                        //     build()
-                        // }
-                        sh ''' 
-                            echo "in parallel 1"
-                            mvn clean package
-                            '''
-                        stash includes: 'target/*', name: 'app'
+                        script {
+                            build()
+                        }
+                        
                     }
                 }
                 stage('In parallel 2') {
                     agent any 
                     steps {
-                        // script {
-                        //     build()
-                        // }
-                        sh ''' 
-                            echo "in parallel 2"
-                            mvn clean package
-                            '''
-                        stash includes: 'target/*', name: 'app'
+                        script {
+                            build()
+                        }
 
                     }
                 }
