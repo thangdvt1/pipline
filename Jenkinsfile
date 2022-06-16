@@ -1,3 +1,4 @@
+@Library('my-library') _
 pipeline {
     agent any
 
@@ -12,7 +13,7 @@ pipeline {
     parameters {
         string(name: 'Username', defaultValue: 'dinhlehoang', description: 'Username')
 
-        booleanParam(name: 'willBuild', defaultValue: false, description: 'Build or not?')
+        booleanParam(name: 'willBuild', defaultValue: true, description: 'Build or not?')
 
         password(name: 'Password', defaultValue: '', description: 'Enter a password')
 
@@ -56,6 +57,9 @@ pipeline {
                 echo "Myname is : ${params.MYNAME}"
                 // sh 'whoami'
                 sh 'mvn --version'
+                script {
+                    demo.info 'hello hoang'
+                }
 
             }
         }
