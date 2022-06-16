@@ -43,7 +43,8 @@ pipeline {
             }
             steps {
                 script {
-                    demo.echoParameters("abcd", "mnqp", true, "thisispassword", "dinhlehoang")
+                    demo.call()
+                    // demo.echoParameters("abcd", "mnqp", true, "thisispassword", "dinhlehoang")
                 }
 
             }
