@@ -76,9 +76,9 @@ pipeline {
                     when {
                         expression { return params.willBuild }
                     }
-                    options {
-                        timeout(time: 20, unit: 'SECONDS')
-                    }
+                    // options {
+                    //     timeout(time: 20, unit: 'SECONDS')
+                    // }
                     steps {
                         sh ''' 
                             echo "in parallel 1"
