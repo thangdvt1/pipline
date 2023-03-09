@@ -31,7 +31,7 @@ pipeline {
 
         stage('Initialize') {
 
-            agent any {
+            agent {
                 docker {
                     image 'maven:3.9.0'
                 }
