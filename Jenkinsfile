@@ -33,7 +33,7 @@ pipeline {
 
             agent {
                 docker {
-                    image 'maven:2.3.4'
+                    image 'maven:3.9.0'
                 }
             }
             environment {
