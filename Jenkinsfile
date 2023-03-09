@@ -90,7 +90,7 @@ pipeline {
                 sh 'echo $HOVATEN'
                 echo 'Start pushing.. with credential'
                 sh 'echo $DOCKERHUB_CREDENTIALS'
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin epay.harbor.com'
                 sh 'docker push epay.harbor.com/epay/imagetest:1.0'
                 
             }
