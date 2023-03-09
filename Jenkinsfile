@@ -32,7 +32,7 @@ pipeline {
         stage('Initialize') {
 
             agent {
-                docker {
+                stages {
                     image 'maven:3.9.0'
                 }
             }
